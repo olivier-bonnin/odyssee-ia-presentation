@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)file:///C:/Users/olbon.DESKTOP-U9M7616/Downloads/timeline-finale-complete.html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Odyssée de l'IA - 18 Révolutions Fondatrices</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #f5f5dc;
+            overflow-x: hidden;
+        }
+
+        .stage {
+            display: none;
+            min-height: 100vh;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .stage.active {
+            display: flex;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #d4af37, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #b0b0b0;
+        }
+
+        /* Portrait réel d'Aristote */
+        .aristote-avatar {
+            width: 200px;
+            height: 200px;
+            margin: 2rem auto;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        .avatar-portrait {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-image: url('https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/8a6eb40e-be19-49ef-a9db-7b8b056a09bd.png');
+            background-size: cover;
+            background-position: center;
+            border: 4px solid #d4af37;
+            box-shadow: 0 15px 35px rgba(212,175,55,0.4);
+            position: relative;
+        }
+
+        .portrait-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(255,215,0,0.05));
+            backdrop-filter: blur(0.5px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-15px) scale(1.02); }
+        }
+
+        .dialogue-box {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #d4af37;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .dialogue-box::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 15px solid #d4af37;
+        }
+
+        .dialogue-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #d4af37, #ffd700);
+            color: #1a1a2e;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(212,175,55,0.3);
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212,175,55,0.4);
+        }
+
+        /* Timeline Horizontale par Nature d'Innovation */
+        .timeline-page {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            padding: 40px 20px;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .timeline-nav {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .innovation-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .innovation-btn {
+            background: linear-gradient(45deg, #4682b4, #5a9bd4);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            min-width: 180px;
+        }
+
+        .innovation-btn:hover, .innovation-btn.active {
+            transform: translateY(-2px);
+        }
+
+        .innovation-btn.conceptuel.active {
+            background: linear-gradient(45deg, #8a2be2, #9370db);
+        }
+
+        .innovation-btn.technologique.active {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+        }
+
+        .innovation-btn.connexionniste.active {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+        }
+
+        .innovation-btn.generatif.active {
+            background: linear-gradient(45deg, #2ecc71, #27ae60);
+        }
+
+        .innovation-btn.all.active {
+            background: linear-gradient(45deg, #d4af37, #ffd700);
+            color: #1a1a2e;
+        }
+
+        /* Timeline Horizontale */
+        .horizontal-timeline-container {
+            width: 100%;
+            position: relative;
+            margin: 50px 0;
+            padding: 60px 0;
+        }
+
+        .horizontal-timeline {
+            display: flex;
+            overflow-x: auto;
+            padding: 40px 20px;
+            gap: 30px;
+            scroll-behavior: smooth;
+            position: relative;
+            min-height: 200px;
+        }
+
+        .horizontal-timeline::before {
+            content: '';
+            position: absolute;
+            top: 140px;
+            left: 20px;
+            right: 20px;
+            height: 4px;
+            background: linear-gradient(90deg, #8a2be2, #ff6b35, #e74c3c, #2ecc71);
+            z-index: 1;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            flex-shrink: 0;
+            width: 120px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item.hidden {
+            display: none;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-icon-marker {
+            font-size: 2.5rem;
+            margin: 0 auto 15px;
+            position: relative;
+            top: 75px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(26, 26, 46, 0.9);
+            border-radius: 50%;
+            border: 3px solid;
+            box-shadow: 0 0 0 3px rgba(212,175,55,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-icon-marker {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 5px rgba(212,175,55,0.4);
+        }
+
+        .timeline-date {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 10px;
+            white-space: nowrap;
+        }
+
+        .timeline-title {
+            font-size: 0.85rem;
+            line-height: 1.2;
+            color: #f5f5dc;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-title {
+            opacity: 1;
+            color: #ffd700;
+        }
+
+        /* Couleurs par nature d'innovation */
+        .conceptuel .timeline-icon-marker { 
+            border-color: #8a2be2; 
+            color: #8a2be2;
+        }
+        .conceptuel .detail-card { border-color: #8a2be2; }
+
+        .technologique .timeline-icon-marker { 
+            border-color: #ff6b35; 
+            color: #ff6b35;
+        }
+        .technologique .detail-card { border-color: #ff6b35; }
+
+        .connexionniste .timeline-icon-marker { 
+            border-color: #e74c3c; 
+            color: #e74c3c;
+        }
+        .connexionniste .detail-card { border-color: #e74c3c; }
+
+        .generatif .timeline-icon-marker { 
+            border-color: #2ecc71; 
+            color: #2ecc71;
+        }
+        .generatif .detail-card { border-color: #2ecc71; }
+
+        /* Carte de détail CORRIGÉE - Hauteur ajustée pour voir la dernière ligne */
+        .detail-card {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 580px;
+            max-width: 85vw;
+            max-height: 70vh;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #d4af37;
+            border-radius: 20px;
+            padding: 20px;
+            padding-bottom: 25px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.4s ease;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .detail-card.visible {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: all;
+        }
+
+        .detail-card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 15px solid #d4af37;
+        }
+
+        .detail-icon {
+            font-size: 3.2rem;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .detail-date {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .detail-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #d4af37;
+            line-height: 1.3;
+        }
+
+        .detail-description {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .detail-info {
+            font-size: 0.85rem;
+            line-height: 1.3;
+        }
+
+        .detail-info-item {
+            margin-bottom: 10px;
+            padding: 8px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
+            border-left: 3px solid #d4af37;
+        }
+
+        .detail-info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-info-label {
+            font-weight: bold;
+            color: #ffd700;
+            display: block;
+            margin-bottom: 3px;
+            font-size: 0.8rem;
+        }
+
+        .detail-info-content {
+            color: #f5f5dc;
+            line-height: 1.25;
+            font-size: 0.8rem;
+        }
+
+        /* Badge nature d'innovation */
+        .innovation-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 18px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .conceptuel .innovation-badge { background: linear-gradient(45deg, #8a2be2, #9370db); }
+        .technologique .innovation-badge { background: linear-gradient(45deg, #ff6b35, #f7931e); }
+        .connexionniste .innovation-badge { background: linear-gradient(45deg, #e74c3c, #c0392b); }
+        .generatif .innovation-badge { background: linear-gradient(45deg, #2ecc71, #27ae60); }
+
+        /* Overlay */
+        .detail-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .detail-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .horizontal-timeline {
+                gap: 20px;
+                padding: 20px 10px;
+            }
+
+            .timeline-item {
+                width: 100px;
+            }
+
+            .timeline-title {
+                font-size: 0.7rem;
+            }
+
+            .timeline-icon-marker {
+                font-size: 2rem;
+                width: 40px;
+                height: 40px;
+            }
+
+            .innovation-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .innovation-btn {
+                width: 200px;
+            }
+
+            .detail-card {
+                width: 85%;
+                max-width: 85vw;
+                max-height: 75vh;
+                padding: 15px;
+                padding-bottom: 20px;
+            }
+
+            .detail-date {
+                font-size: 1.4rem;
+            }
+
+            .detail-title {
+                font-size: 1.1rem;
+            }
+
+            .detail-icon {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body style="opacity: 1; transition: opacity 0.5s;">
+    <!-- Page d'accueil -->
+    <section id="home" class="stage">
+        <div class="container">
+            <h1>🏛️ L'Odyssée de l'Intelligence Artificielle</h1>
+            <p class="subtitle">Aristote, votre guide à travers les 18 révolutions fondatrices</p>
+
+            <div class="aristote-avatar">
+                <div class="avatar-portrait">
+                    <div class="portrait-overlay"></div>
+                </div>
+            </div>
+
+            <div class="dialogue-box">
+                <p class="dialogue-text">
+                    "Χαίρετε ! Salutations, explorateur moderne ! Je suis Aristote de Stagire. 
+                    Mes travaux sur la logique formelle ont rendu possible vos machines pensantes. 
+                    Découvrons ensemble les 18 révolutions fondatrices, de mes syllogismes à ChatGPT, 
+                    avec leurs contextes, impacts et anecdotes fascinantes..."
+                </p>
+            </div>
+
+            <button class="btn" onclick="showTimeline()">
+                🚀 Découvrir les 18 Révolutions Fondatrices
+            </button>
+        </div>
+    </section>
+
+    <!-- Timeline des 18 Révolutions Fondatrices -->
+    <section id="timeline" class="stage active">
+        <div class="timeline-page">
+            <div class="timeline-header">
+                <h1>🧠 Les 18 Révolutions Fondatrices de l'IA</h1>
+                <p class="subtitle">De 384 av. J.-C. à 2022 - Une odyssée de 2500 ans</p>
+            </div>
+
+            <div class="timeline-nav">
+                <div class="innovation-buttons">
+                    <button class="innovation-btn all active" onclick="filterByInnovation(&#39;all&#39;)">📚 Toutes les révolutions</button>
+                    <button class="innovation-btn conceptuel" onclick="filterByInnovation(&#39;conceptuel&#39;)">🧠 Conceptuel &amp; Théorique</button>
+                    <button class="innovation-btn technologique" onclick="filterByInnovation(&#39;technologique&#39;)">⚙️ Technologique &amp; Ingénierie</button>
+                    <button class="innovation-btn connexionniste" onclick="filterByInnovation(&#39;connexionniste&#39;)">🧠 Connexionniste &amp; Apprentissage</button>
+                    <button class="innovation-btn generatif" onclick="filterByInnovation(&#39;generatif&#39;)">🎨 Génératif &amp; Créatif</button>
+                </div>
+
+                <button class="btn" onclick="showHome()">🏛️ Retour avec Aristote</button>
+            </div>
+
+            <div class="horizontal-timeline-container">
+                <div class="horizontal-timeline" id="timelineContainer"><div class="timeline-item conceptuel" data-innovation-type="conceptuel" data-event-id="1">
+                    <div class="timeline-date">384 av. J.-C.</div>
+                    <div class="timeline-title">Aristote invente la logique formelle</div>
+                    <div class="timeline-icon-marker">🏛️</div>
+                </div><div class="timeline-item conceptuel" data-innovation-type="conceptuel" data-event-id="2">
+                    <div class="timeline-date">825</div>
+                    <div class="timeline-title">Al-Khwarizmi systématise l'algorithmique</div>
+                    <div class="timeline-icon-marker">📐</div>
+                </div><div class="timeline-item technologique" data-innovation-type="technologique" data-event-id="6">
+                    <div class="timeline-date">1642</div>
+                    <div class="timeline-title">Pascal invente la Pascaline</div>
+                    <div class="timeline-icon-marker">⚙️</div>
+                </div><div class="timeline-item technologique" data-innovation-type="technologique" data-event-id="7">
+                    <div class="timeline-date">1843</div>
+                    <div class="timeline-title">Ada Lovelace programme la créativité</div>
+                    <div class="timeline-icon-marker">👩‍💻</div>
+                </div><div class="timeline-item conceptuel" data-innovation-type="conceptuel" data-event-id="3">
+                    <div class="timeline-date">1936</div>
+                    <div class="timeline-title">Alan Turing formalise le calcul universel</div>
+                    <div class="timeline-icon-marker">🔬</div>
+                </div><div class="timeline-item connexionniste" data-innovation-type="connexionniste" data-event-id="12">
+                    <div class="timeline-date">1943</div>
+                    <div class="timeline-title">McCulloch &amp; Pitts inventent le neurone artificiel</div>
+                    <div class="timeline-icon-marker">🧠</div>
+                </div><div class="timeline-item conceptuel" data-innovation-type="conceptuel" data-event-id="4">
+                    <div class="timeline-date">1950</div>
+                    <div class="timeline-title">Test de Turing redéfinit l'intelligence</div>
+                    <div class="timeline-icon-marker">🤖</div>
+                </div><div class="timeline-item conceptuel" data-innovation-type="conceptuel" data-event-id="5">
+                    <div class="timeline-date">1956</div>
+                    <div class="timeline-title">Conférence de Dartmouth : naissance officielle de l'IA</div>
+                    <div class="timeline-icon-marker">🎓</div>
+                </div><div class="timeline-item technologique" data-innovation-type="technologique" data-event-id="8">
+                    <div class="timeline-date">1958</div>
+                    <div class="timeline-title">LISP révolutionne la programmation symbolique</div>
+                    <div class="timeline-icon-marker">💻</div>
+                </div><div class="timeline-item technologique" data-innovation-type="technologique" data-event-id="9">
+                    <div class="timeline-date">1965</div>
+                    <div class="timeline-title">DENDRAL, premier système expert</div>
+                    <div class="timeline-icon-marker">🧪</div>
+                </div><div class="timeline-item technologique" data-innovation-type="technologique" data-event-id="10">
+                    <div class="timeline-date">1997</div>
+                    <div class="timeline-title">Deep Blue bat Kasparov</div>
+                    <div class="timeline-icon-marker">♟️</div>
+                </div><div class="timeline-item technologique" data-innovation-type="technologique" data-event-id="11">
+                    <div class="timeline-date">2006</div>
+                    <div class="timeline-title">Big Data et renaissance du machine learning</div>
+                    <div class="timeline-icon-marker">📊</div>
+                </div><div class="timeline-item connexionniste" data-innovation-type="connexionniste" data-event-id="13">
+                    <div class="timeline-date">2012</div>
+                    <div class="timeline-title">AlexNet et le Deep Learning moderne</div>
+                    <div class="timeline-icon-marker">👁️</div>
+                </div><div class="timeline-item generatif" data-innovation-type="generatif" data-event-id="16">
+                    <div class="timeline-date">2014</div>
+                    <div class="timeline-title">GANs et l'IA générative</div>
+                    <div class="timeline-icon-marker">🎭</div>
+                </div><div class="timeline-item connexionniste" data-innovation-type="connexionniste" data-event-id="14">
+                    <div class="timeline-date">2016</div>
+                    <div class="timeline-title">AlphaGo et la créativité artificielle</div>
+                    <div class="timeline-icon-marker">🎨</div>
+                </div><div class="timeline-item connexionniste" data-innovation-type="connexionniste" data-event-id="15">
+                    <div class="timeline-date">2017</div>
+                    <div class="timeline-title">Transformers et la révolution NLP</div>
+                    <div class="timeline-icon-marker">🔄</div>
+                </div><div class="timeline-item generatif" data-innovation-type="generatif" data-event-id="17">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-title">GPT-3 et la montée en puissance</div>
+                    <div class="timeline-icon-marker">🚀</div>
+                </div><div class="timeline-item generatif" data-innovation-type="generatif" data-event-id="18">
+                    <div class="timeline-date">2022</div>
+                    <div class="timeline-title">ChatGPT, bascule historique</div>
+                    <div class="timeline-icon-marker">💬</div>
+                </div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overlay et carte de détail -->
+    <div class="detail-overlay" id="detailOverlay" onclick="hideDetailCard()"></div>
+    <div class="detail-card technologique" id="detailCard">
+        <div class="innovation-badge" id="innovationBadge">⚙️ Technologique</div>
+        <div class="detail-icon" id="detailIcon">👩‍💻</div>
+        <div class="detail-date" id="detailDate">1843</div>
+        <div class="detail-title" id="detailTitle">Ada Lovelace programme la créativité</div>
+        <div class="detail-description" id="detailDescription">Vision que les machines pourraient manipuler des symboles, pas seulement des chiffres</div>
+        <div class="detail-info">
+            <div class="detail-info-item">
+                <span class="detail-info-label">🏛️ Contexte historique :</span>
+                <div class="detail-info-content" id="detailContext">première à formaliser un programme pour la machine de Babbage.</div>
+            </div>
+            <div class="detail-info-item">
+                <span class="detail-info-label">⚡ Impact révolutionnaire :</span>
+                <div class="detail-info-content" id="detailImpact">vision que les machines pourraient manipuler des symboles, pas seulement des chiffres.</div>
+            </div>
+            <div class="detail-info-item">
+                <span class="detail-info-label">🔄 Parallèle industriel :</span>
+                <div class="detail-info-content" id="detailParallele">comme l'électricité, ouverture vers une nouvelle ère.</div>
+            </div>
+            <div class="detail-info-item">
+                <span class="detail-info-label">💡 Anecdote fascinante :</span>
+                <div class="detail-info-content" id="detailAnecdote">elle parlait déjà de « science poétique » des machines.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Données complètes des 18 révolutions fondatrices
+        const timelineEvents = [
+            // CONCEPTUEL & THÉORIQUE
+            { id: 1, date: "384 av. J.-C.", innovation_type: "conceptuel", badge: "🧠 Conceptuel", titre: "Aristote invente la logique formelle", description: "Création du syllogisme, base de toute formalisation algorithmique", contexte: "invention du syllogisme.", impact: "base de toute formalisation algorithmique.", parallele: "une « machine à vapeur conceptuelle » de la pensée.", anecdote: "Aristote voyait déjà la logique comme un outil universel.", icone: "🏛️" },
+            { id: 2, date: "825", innovation_type: "conceptuel", badge: "🧠 Conceptuel", titre: "Al-Khwarizmi systématise l'algorithmique", description: "Naissance simultanée de l'algèbre et du concept d'algorithme", contexte: "mathématicien perse, il formalise des méthodes générales de calcul.", impact: "son nom donnera « algorithme ».", parallele: "l'électricité de l'intellect, base de l'automatisation.", anecdote: "ses manuscrits traduits à Tolède influenceront toute la science occidentale.", icone: "📐" },
+            { id: 3, date: "1936", innovation_type: "conceptuel", badge: "🧠 Conceptuel", titre: "Alan Turing formalise le calcul universel", description: "Invente la machine abstraite capable de résoudre tout calcul", contexte: "invente la machine abstraite capable de résoudre tout calcul.", impact: "base de l'informatique moderne.", parallele: "comme la chaîne de montage de Ford, une logique standardisée.", anecdote: "Turing imaginait déjà la possibilité de « penser » avec des machines.", icone: "🔬" },
+            { id: 4, date: "1950", innovation_type: "conceptuel", badge: "🧠 Conceptuel", titre: "Test de Turing redéfinit l'intelligence", description: "Un « jeu de l'imitation » pour définir si une machine pense", contexte: "un « jeu de l'imitation » pour définir si une machine pense.", impact: "la référence philosophique de l'IA.", parallele: "comme une norme ISO : un cadre commun.", anecdote: "Turing ne l'a jamais appelé « test de Turing » lui-même.", icone: "🤖" },
+            { id: 5, date: "1956", innovation_type: "conceptuel", badge: "🧠 Conceptuel", titre: "Conférence de Dartmouth : naissance officielle de l'IA", description: "Acte de naissance de l'IA comme discipline scientifique", contexte: "John McCarthy réunit chercheurs comme Minsky, Shannon et Newell.", impact: "acte de naissance de l'IA comme discipline.", parallele: "équivalent d'une exposition universelle.", anecdote: "c'est là que McCarthy propose le terme « intelligence artificielle ».", icone: "🎓" },
+
+            // TECHNOLOGIQUE & INGÉNIERIE
+            { id: 6, date: "1642", innovation_type: "technologique", badge: "⚙️ Technologique", titre: "Pascal invente la Pascaline", description: "Première machine mécanique capable d'additionner et de soustraire", contexte: "première machine mécanique capable d'additionner et de soustraire.", impact: "elle marque l'entrée du calcul dans le monde des instruments.", parallele: "comme le métier à tisser Jacquard, une automatisation spécialisée.", anecdote: "Pascal avait seulement 19 ans quand il conçut la Pascaline.", icone: "⚙️" },
+            { id: 7, date: "1843", innovation_type: "technologique", badge: "⚙️ Technologique", titre: "Ada Lovelace programme la créativité", description: "Vision que les machines pourraient manipuler des symboles, pas seulement des chiffres", contexte: "première à formaliser un programme pour la machine de Babbage.", impact: "vision que les machines pourraient manipuler des symboles, pas seulement des chiffres.", parallele: "comme l'électricité, ouverture vers une nouvelle ère.", anecdote: "elle parlait déjà de « science poétique » des machines.", icone: "👩‍💻" },
+            { id: 8, date: "1958", innovation_type: "technologique", badge: "⚙️ Technologique", titre: "LISP révolutionne la programmation symbolique", description: "Langage moteur de l'IA symbolique", contexte: "John McCarthy invente LISP.", impact: "langage moteur de l'IA symbolique.", parallele: "comme le moteur électrique dans les usines.", anecdote: "encore utilisé dans certains systèmes IA aujourd'hui.", icone: "💻" },
+            { id: 9, date: "1965", innovation_type: "technologique", badge: "⚙️ Technologique", titre: "DENDRAL, premier système expert", description: "Début des applications industrielles de l'IA", contexte: "programme d'analyse chimique à Stanford.", impact: "début des applications industrielles de l'IA.", parallele: "comme la spécialisation des chaînes d'assemblage.", anecdote: "il battait parfois les experts humains en chimie.", icone: "🧪" },
+            { id: 10, date: "1997", innovation_type: "technologique", badge: "⚙️ Technologique", titre: "Deep Blue bat Kasparov", description: "Triomphe de la puissance brute sur l'intelligence humaine", contexte: "IBM conçoit un superordinateur champion d'échecs.", impact: "triomphe de la puissance brute.", parallele: "comme le fordisme : efficacité mais rigidité.", anecdote: "Kasparov a soupçonné IBM de tricherie.", icone: "♟️" },
+            { id: 11, date: "2006", innovation_type: "technologique", badge: "⚙️ Technologique", titre: "Big Data et renaissance du machine learning", description: "Les algorithmes statistiques redeviennent performants", contexte: "explosion des données numériques.", impact: "les algorithmes statistiques redeviennent performants.", parallele: "comme l'arrivée de l'électricité dans les usines.", anecdote: "« Données, données, données ! » devient le mantra des chercheurs.", icone: "📊" },
+
+            // CONNEXIONNISTE & APPRENTISSAGE
+            { id: 12, date: "1943", innovation_type: "connexionniste", badge: "🧠 Connexionniste", titre: "McCulloch & Pitts inventent le neurone artificiel", description: "Premier modèle mathématique du neurone biologique", contexte: "premier modèle mathématique du neurone biologique.", impact: "naissance du lien entre cerveau et machine.", parallele: "comme une pièce maîtresse d'usine, encore rudimentaire.", anecdote: "leur article est devenu un texte fondateur du connexionnisme.", icone: "🧠" },
+            { id: 13, date: "2012", innovation_type: "connexionniste", badge: "🧠 Connexionniste", titre: "AlexNet et le Deep Learning moderne", description: "Déclenche l'ère du deep learning", contexte: "CNN bat tous les records sur ImageNet.", impact: "déclenche l'ère du deep learning.", parallele: "comme la découverte du pétrole : une ressource transformante.", anecdote: "la victoire a été si nette que toute la recherche a suivi.", icone: "👁️" },
+            { id: 14, date: "2016", innovation_type: "connexionniste", badge: "🧠 Connexionniste", titre: "AlphaGo et la créativité artificielle", description: "Une IA surprend par des coups créatifs", contexte: "DeepMind bat Lee Sedol au jeu de Go.", impact: "une IA surprend par des coups créatifs.", parallele: "comme l'automobile remplaçant le cheval.", anecdote: "le coup 37 est encore étudié comme « génialement inhumain ».", icone: "🎨" },
+            { id: 15, date: "2017", innovation_type: "connexionniste", badge: "🧠 Connexionniste", titre: "Transformers et la révolution NLP", description: "Fondement de tous les LLMs modernes", contexte: "Google publie « Attention is All You Need ».", impact: "fondement de tous les LLMs modernes.", parallele: "comme l'électricité distribuée à grande échelle.", anecdote: "aujourd'hui tous les grands modèles IA reposent sur cette architecture.", icone: "🔄" },
+
+            // GÉNÉRATIF & CRÉATIF
+            { id: 16, date: "2014", innovation_type: "generatif", badge: "🎨 Génératif", titre: "GANs et l'IA générative", description: "Naissance des deepfakes, IA créatives", contexte: "Ian Goodfellow invente les réseaux génératifs adverses.", impact: "naissance des deepfakes, IA créatives.", parallele: "comme l'imprimerie : production de masse.", anecdote: "l'idée lui est venue dans un bar lors d'un débat.", icone: "🎭" },
+            { id: 17, date: "2020", innovation_type: "generatif", badge: "🎨 Génératif", titre: "GPT-3 et la montée en puissance", description: "L'échelle démultiplie les capacités des modèles de langage", contexte: "modèle de 175 milliards de paramètres.", impact: "l'échelle démultiplie les capacités des modèles de langage.", parallele: "comme le passage de l'artisanat à l'industrie lourde.", anecdote: "GPT-2 avait été censuré partiellement, GPT-3 a marqué l'ouverture via API.", icone: "🚀" },
+            { id: 18, date: "2022", innovation_type: "generatif", badge: "🎨 Génératif", titre: "ChatGPT, bascule historique", description: "100 millions d'utilisateurs en 2 mois", contexte: "OpenAI sort ChatGPT accessible au grand public.", impact: "100 millions d'utilisateurs en 2 mois.", parallele: "comme l'iPhone, démocratisation massive.", anecdote: "adopté en quelques mois par étudiants, médecins, avocats.", icone: "💬" }
+        ];
+
+        let currentInnovationType = 'all';
+        let currentDetailCard = null;
+
+        // Générer la timeline horizontale
+        function generateTimeline() {
+            const container = document.getElementById('timelineContainer');
+            container.innerHTML = '';
+
+            // Trier par date chronologique
+            const sortedEvents = [...timelineEvents].sort((a, b) => {
+                const dateA = a.date.includes('av. J.-C.') ? -parseInt(a.date) : parseInt(a.date);
+                const dateB = b.date.includes('av. J.-C.') ? -parseInt(b.date) : parseInt(b.date);
+                return dateA - dateB;
+            });
+
+            sortedEvents.forEach((event, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `timeline-item ${event.innovation_type}`;
+                itemDiv.dataset.innovationType = event.innovation_type;
+                itemDiv.dataset.eventId = event.id;
+
+                itemDiv.innerHTML = `
+                    <div class="timeline-date">${event.date}</div>
+                    <div class="timeline-title">${event.titre}</div>
+                    <div class="timeline-icon-marker">${event.icone}</div>
+                `;
+
+                // Event listeners pour hover et click
+                itemDiv.addEventListener('mouseenter', () => showDetailCard(event));
+                itemDiv.addEventListener('mouseleave', () => hideDetailCard());
+                itemDiv.addEventListener('click', () => showDetailCard(event, true));
+
+                container.appendChild(itemDiv);
+            });
+        }
+
+        // Afficher la carte de détail CORRIGÉE
+        function showDetailCard(event, sticky = false) {
+            const card = document.getElementById('detailCard');
+            const overlay = document.getElementById('detailOverlay');
+
+            // Remplir les données enrichies
+            document.getElementById('innovationBadge').textContent = event.badge;
+            document.getElementById('detailIcon').textContent = event.icone;
+            document.getElementById('detailDate').textContent = event.date;
+            document.getElementById('detailTitle').textContent = event.titre;
+            document.getElementById('detailDescription').textContent = event.description;
+            document.getElementById('detailContext').textContent = event.contexte;
+            document.getElementById('detailImpact').textContent = event.impact;
+            document.getElementById('detailParallele').textContent = event.parallele;
+            document.getElementById('detailAnecdote').textContent = event.anecdote;
+
+            // Appliquer le thème
+            card.className = `detail-card ${event.innovation_type} visible`;
+
+            if (sticky) {
+                overlay.classList.add('visible');
+                currentDetailCard = event.id;
+            }
+        }
+
+        // Masquer la carte de détail
+        function hideDetailCard() {
+            if (currentDetailCard) return;
+
+            const card = document.getElementById('detailCard');
+            const overlay = document.getElementById('detailOverlay');
+
+            card.classList.remove('visible');
+            overlay.classList.remove('visible');
+        }
+
+        // Masquer définitivement la carte
+        function hideDetailCardDefinitive() {
+            const card = document.getElementById('detailCard');
+            const overlay = document.getElementById('detailOverlay');
+
+            card.classList.remove('visible');
+            overlay.classList.remove('visible');
+            currentDetailCard = null;
+        }
+
+        // Filtrage par nature d'innovation
+        function filterByInnovation(type) {
+            currentInnovationType = type;
+
+            // Mettre à jour les boutons
+            document.querySelectorAll('.innovation-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Filtrer les événements
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                if (type === 'all' || item.dataset.innovationType === type) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            hideDetailCardDefinitive();
+        }
+
+        // Navigation
+        function showTimeline() {
+            document.getElementById('home').classList.remove('active');
+            document.getElementById('timeline').classList.add('active');
+            generateTimeline();
+        }
+
+        function showHome() {
+            document.getElementById('timeline').classList.remove('active');
+            document.getElementById('home').classList.add('active');
+            hideDetailCardDefinitive();
+        }
+
+        // Event listener pour l'overlay
+        document.getElementById('detailOverlay').addEventListener('click', hideDetailCardDefinitive);
+
+        // Initialisation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+
+</body></html>
