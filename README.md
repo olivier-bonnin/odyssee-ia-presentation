@@ -20,10 +20,8 @@ IA • Data • Industrie • Pédagogie • Vision long terme
 
 ## 📊 Présentation synthétique du projet
 
-- 📄 **Voir la présentation (PDF)**  
-  `slides/L_Odyssee_de_l_IA.pdf`
-- 🖥️ **Télécharger la version PowerPoint (PPT)**  
-  `slides/L_Odyssee_de_l_IA.pptx`
+- 💻 **Télécharger la présentation PowerPoint (PPT)**  
+  👉 [L’Odyssée de l’IA – Présentation](diapositives/L_Odyssee_de_l_IA.pptx)
 
 > Cette présentation expose :
 > - le contexte historique,
